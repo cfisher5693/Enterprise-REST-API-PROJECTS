@@ -1,0 +1,15 @@
+﻿body {
+    color: darkgreen;
+}
+
+.angry {
+    color: red;
+}
+
+#firstPara {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+a[href="contact.html"] {
+    color: magenta;
+}
