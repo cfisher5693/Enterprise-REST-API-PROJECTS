@@ -7,23 +7,47 @@
     <link rel="stylesheet" href="style/site.css" />
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link" href="/"><i class="fas fa-house"></i> Home</a>
+                    <a class="nav-link" href="pfolio.html"><i class="fas fa-folder"></i> Portfolio</a>
+                    <a class="nav-link" href="res.html"><i class="fas fa-newspaper"></i> Resume</a>
+                    <a class="nav-link active" aria-current="page" href="contact.html"><i class="fas fa-envelope"></i> Contact Me</a>
+                </div>
+            </div>
+        </div>
+    </nav>
     <h1>Contact Me</h1>
     <form action="feedback.html">
-        <div>
-            <label for="name">Name:</label>"
-            <input type="text" name="name" required/>
+        <div class="form-group">
+            <label for="exampleInputName">Name</label>
+            <input type="text" class="form-control" id="exampleInputName" placeholder="Enter Name" required>
         </div>
-        <div>
-            <label for="email">EMail:</label>"
-            <input type="text" name="email" required/>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
         </div>
-        <div>
-            <label for="question">Question/Comments:</label>"
-            <textarea name="question" required/>Type questions/comments you want addressed here!</textarea>
+        <div class="form-group">
+            <label for="dropdownReason">Reason for Contact</label>
+            <select class="custom-select" required>
+                <option selected>Open this select menu</option>
+                <option value="1">Suggestion</option>
+                <option value="2">Complaint</option>
+                <option value="3">Request</option>
+            </select>
         </div>
-        <div>
-            <input type="submit" value="Send" />
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Questions/Comments:</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
         </div>
+        <button type="submit" class="btn btn-primary">Send</button>
     </form>
 </body>
 </html>
+<script type="text/javascript" src="bundle.js"></script>
