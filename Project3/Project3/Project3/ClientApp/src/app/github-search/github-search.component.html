@@ -1,0 +1,51 @@
+<h3> Github Search</h3>
+<form class="row row-cols-lg-auto g-3 align-items-center" [formGroup]="searchForm" (ngSubmit)="searchGithub()">
+  <div class="col-12">
+    <label class="visually-hidden" for="searchQuery">Github Search</label>
+    <input type="text" class="form-control" id="searchQuery" formControlName="searchQuery">
+  </div>
+  <div class="col-12">
+    <input class="form-check-input" type="radio" name="searchSelection" id="user" value="user" formControlName="searchSelection">
+    <label class="form-check-label" for="exampleRadios1">
+      User
+    </label>
+  </div>
+  <div class="col-12">
+    <input class="form-check-input" type="radio" name="searchSelection" id="repo" value="repo" formControlName="searchSelection">
+    <label class="form-check-label" for="exampleRadios2">
+      Repo
+    </label>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Search</button>
+  </div>
+</form>
+<p></p>
+<div *ngIf="error" class="alert alert-danger" role="alert">
+  {{ error }}
+</div>
+<div *ngIf="result1a">
+  <div class="row">
+    <div class="col-3" *ngFor="let userResource of result1a">
+      <img [src]="userResource.avatar_url" class="card-img-top" alt="avatar image" />
+      <div class="card-body">
+        <h5 class="card-title">{{ userResource.login }}</h5>
+        <a [routerLink]="['/user', userResource.login]" class="btn-primary btn">More Details</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="result1b">
+  <div class="row">
+    <div class="col-3" *ngFor="let repoResource of result1b">
+      <img [src]="repoResource.owner.avatar_url" class="card-img-top" alt="avatar image" />
+      <div class="card-body">
+        <h6 class="card-text">Open Issues: {{ repoResource.open_issues_count }}</h6>
+        <h6 class="card-text">Stargazers: {{ repoResource.stargazers_count }}</h6>
+        <h6 class="card-text">Forks: {{ repoResource.forks_count }}</h6>
+        <h6 class="card-text">Language: {{ repoResource.language }}</h6>
+        <a [routerLink]="['/repos', repoResource.full_name]" class="btn-primary btn">More Details</a>
+      </div>
+    </div>
+  </div>
+</div>
