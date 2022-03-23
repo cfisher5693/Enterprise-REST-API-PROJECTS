@@ -9,4 +9,5 @@ export class Repo {
   language!: string;
   clone_url!: string;
   commits_url!: string;
+  issues_url!: string;
 }

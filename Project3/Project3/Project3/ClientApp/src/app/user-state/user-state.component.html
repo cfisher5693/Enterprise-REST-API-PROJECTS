@@ -1,1 +1,66 @@
-<p>user-state works!</p>
+<div *ngIf="result">
+  <img [src]="result.avatar_url" alt="avatar image" />
+  <h5>Login: {{ result.login }}</h5>
+  <div *ngIf="result.name">
+    <h5>Name: {{ result.name }}</h5>
+  </div>
+  <div *ngIf="!result.name">
+    <h5>Name: Not Available!</h5>
+  </div>
+  <div *ngIf="result.blog">
+    <h5>Blog: {{ result.blog }}</h5>
+  </div>
+  <div *ngIf="!result.blog">
+    <h5>Blog: Not Available!</h5>
+  </div>
+  <div *ngIf="result.location">
+    <h5>Location: {{ result.location }}</h5>
+  </div>
+  <div *ngIf="!result.location">
+    <h5>Location: Not Available!</h5>
+  </div>
+  <h5>HTML Link: <a [href]="result.html_url">{{ result.html_url }}</a></h5>
+  <div *ngIf="!function">
+    {{ checkUrls() }}
+  </div>
+  <p></p>
+  <h3>Repos</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Repo Name</th>
+        <th scope="col">Stargazer Count</th>
+        <th scope="col">Open Issue Count</th>
+        <th scope="col">Language</th>
+        <th scope="col">HTML Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let repoResource of resultA">
+        <td>{{ repoResource.name }}</td>
+        <td>{{ repoResource.stargazers_count }}</td>
+        <td>{{ repoResource.open_issues_count }}</td>
+        <td>{{ repoResource.language }}</td>
+        <td><a [routerLink]="['/repos', repoResource.full_name]">{{ repoResource.url }}</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <p></p>
+  <h3>Followers</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Avatar</th>
+        <th scope="col">Login</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let userResource of resultB">
+        <td class="w-25">
+          <img [src]="userResource.avatar_url" class="img-fluid" alt="Avatar Image" />
+        </td>
+        <td><h2>{{ userResource.login }}</h2></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

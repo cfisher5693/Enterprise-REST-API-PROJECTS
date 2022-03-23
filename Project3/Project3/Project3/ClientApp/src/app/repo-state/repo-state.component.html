@@ -1,1 +1,62 @@
-<p>repo-state works!</p>
+<div *ngIf="result">
+  <h5>Repo Name: {{ result.name }}</h5>
+  <h5>Stargazers: {{ result.stargazers_count }}</h5>
+  <h5>Subscribers: {{ result.subscribers_count }}</h5>
+  <h5>Forks: {{ result.forks_count }}</h5>
+  <h5>Open Issues: {{ result.open_issues_count }}</h5>
+  <div *ngIf="result.language">
+    <h5>Language: {{ result.language }}</h5>
+  </div>
+  <div *ngIf="!result.language">
+    <h5>Language: Not Available!</h5>
+  </div>
+  <h5>HTML Link: <a [href]="result.html_url">{{ result.html_url }}</a></h5>
+  <h5>Clone Link: <a [href]="result.clone_url">{{ result.clone_url }}</a></h5>
+  <h5>Description: </h5>
+  <div *ngIf="result.description">
+    <p>{{ result.description }}</p>
+  </div>
+  <div *ngIf="!result.description">
+    <p>No Description!</p>
+  </div>
+  <div *ngIf="!function">
+    {{ checkUrls() }}
+  </div>
+  <h3>Commits</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Login</th>
+        <th scope="col">Message</th>
+        <th scope="col">Comment Count</th>
+        <th scope="col">HTML Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let commitID of (resultA ? resultA.slice(0,5): [])">
+        <td>{{ commitID.author.login }}</td>
+        <td>{{ commitID.commit.message }}</td>
+        <td>{{ commitID.commit.comment_count }}</td>
+        <td><a [href]="commitID.html_url">{{ commitID.html_url }}</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <p></p>
+  <h3>Issues</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Creation Date</th>
+        <th scope="col">HTML Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let issue of resultB">
+        <td>{{ issue.title }}</td>
+        <td>{{ issue.created_at }}</td>
+        <td><a [href]="issue.html_url">{{ issue.html_url }}</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

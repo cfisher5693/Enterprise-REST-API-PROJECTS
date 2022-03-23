@@ -6,6 +6,10 @@ import { catchError } from "rxjs/operators";
 import { RepoList } from './repo-list';
 import { User } from './user';
 import { Repo } from './repo';
+import { RepoResource } from './repo-resource';
+import { UserResource } from './user-resource';
+import { Commit } from './commit';
+import { Issue } from './issue';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +40,30 @@ export class GithubService {
   getRepo(name: string): Observable<Repo> {
     return this.httpClient
       .get<Repo>(`${this.baseURL}/repos/${name}`)
+      .pipe(catchError(this.handleError));
+  }
+
+  retrieveRepos(url: string): Observable<RepoResource[]> {
+    return this.httpClient
+      .get<RepoResource[]>(url)
+      .pipe(catchError(this.handleError));
+  }
+
+  retrieveFollowers(url: string): Observable<UserResource[]> {
+    return this.httpClient
+      .get<UserResource[]>(url)
+      .pipe(catchError(this.handleError));
+  }
+
+  retrieveCommits(url: string): Observable<Commit[]> {
+    return this.httpClient
+      .get<Commit[]>(url)
+      .pipe(catchError(this.handleError));
+  }
+
+  retrieveIssues(url: string, num: number): Observable<Issue> {
+    return this.httpClient
+      .get<Issue>(`${url}/${num}`)
       .pipe(catchError(this.handleError));
   }
 
