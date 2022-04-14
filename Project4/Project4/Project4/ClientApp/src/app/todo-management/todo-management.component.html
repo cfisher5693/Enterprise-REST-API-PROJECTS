@@ -1,0 +1,16 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Due Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of items">
+      <td>{{item.name}}</td>
+      <td>{{item.description}}</td>
+      <td>{{item.dueDate | date:'medium'}}</td>
+    </tr>
+  </tbody>
+</table>
