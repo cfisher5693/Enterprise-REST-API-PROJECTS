@@ -31,7 +31,8 @@ namespace Project4.Services
 
         public Item GetById(int id)
         {
-            return this._context.Items.Include(i => i.Tags).FirstOrDefault(i => i.Id == id);
+            var item = this._context.Items.Include(i => i.Tags).FirstOrDefault(i => i.Id == id);
+            return item;
         }
 
         public IEnumerable<Item> Get()
@@ -46,6 +47,7 @@ namespace Project4.Services
             itemUpdating.Description = item.Description;
             itemUpdating.DueDate = item.DueDate;
             itemUpdating.Completed = item.Completed;
+            itemUpdating.Tags.Clear();
             foreach(ItemTags tag in item.Tags)
             {
                 itemUpdating.Tags.Add(tag);

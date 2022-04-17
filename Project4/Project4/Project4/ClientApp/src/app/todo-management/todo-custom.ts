@@ -6,5 +6,5 @@ export class TodoCustom {
   description!: string;
   dueDate!: Date;
   completed!: number;
-  tags!: TagCustom;
+  tags!: TagCustom[];
 }

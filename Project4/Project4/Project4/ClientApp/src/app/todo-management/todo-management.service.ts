@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TodoCustom } from './todo-custom';
-import { catchError } from "rxjs/operators";
+import { catchError, map } from "rxjs/operators";
 import { throwError } from 'rxjs';
 
 @Injectable({
@@ -9,11 +9,35 @@ import { throwError } from 'rxjs';
 })
 export class TodoManagementService {
 
-  private baseUrl = '/api/todo';
+  private baseUrl = '/api/Item';
   constructor(private http: HttpClient) { }
 
   get() {
     return this.http.get<TodoCustom[]>(this.baseUrl)
+      .pipe(
+        map<TodoCustom[], TodoCustom[]>(items => {
+          items.forEach(item => {
+            item.dueDate = new Date(item.dueDate);
+          });
+          return items
+        }),
+        catchError(this.handleError));
+  }
+
+  save(item: TodoCustom) {
+    return this.http.post(this.baseUrl, item)
+      .pipe(catchError(this.handleError));
+  }
+
+  update(item: TodoCustom) {
+    return this.http.put(this.baseUrl, item)
+      .pipe(catchError(this.handleError));
+  }
+
+  remove(id: number) {
+    const newPath = this.baseUrl + '/' + id
+    console.log(newPath)
+    return this.http.delete(newPath)
       .pipe(catchError(this.handleError));
   }
 

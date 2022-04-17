@@ -24,7 +24,7 @@ namespace Project4.Model
                 Id = 1,
                 Name = "TODOTEST1",
                 Description = "THIS IS A TEST ENTRY.",
-                DueDate = DateTime.Now,
+                DueDate = DateTime.UtcNow,
                 Completed = 0,
             });
             modelBuilder.Entity<ItemTags>().HasData(new ItemTags

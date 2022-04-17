@@ -7,6 +7,6 @@
         public string Description { get; set; }
         public DateTime DueDate { get; set; }
         public int Completed { get; set; }
-        public IList<ItemTags> Tags { get; set; }
+        public IList<ItemTags> Tags { get; set; } = new List<ItemTags>();
     }
 }

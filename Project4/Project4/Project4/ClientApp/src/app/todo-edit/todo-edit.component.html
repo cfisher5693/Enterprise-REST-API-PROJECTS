@@ -1,0 +1,35 @@
+<div class="modal-header">
+  <h4 class="modal-title">New Todo Item</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form>
+    <div class="form-group">
+      <label for="itemName">Name</label>
+      <input type="text" class="form-control" name="itemName" id="itemName" [(ngModel)]="item.name" />
+    </div>
+    <div class="form-group">
+      <label for="itemDesc">Description</label>
+      <input type="text" class="form-control" name="itemDesc" id="itemDesc" [(ngModel)]="item.description" />
+    </div>
+    <div class="form-group">
+      <label for="dueDate">Due Date</label>
+      <div class="input-group">
+        <input class="form-control" placeholder="yyyy-mm-dd"
+               name="dp" [(ngModel)]="dueDate" ngbDatepicker #d="ngbDatepicker">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">Date</button>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="dueTime">Due Time</label>
+      <ngb-timepicker name="dueTime" [(ngModel)]="dueTime"></ngb-timepicker>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="save()">Save</button>
+</div>

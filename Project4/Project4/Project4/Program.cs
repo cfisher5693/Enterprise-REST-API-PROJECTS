@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Project4.Middleware;
 using Project4.Model;
 using Project4.Services;
 
@@ -7,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddTransient<ITodoItemService, TodoService>();
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddJsonOptions(o => o.JsonSerializerOptions.Converters.Add(new TodoDateTimeConverter()));
 builder.Services.AddSwaggerGen();
 
 var connectionString = builder.Configuration["ConnectionString"];
