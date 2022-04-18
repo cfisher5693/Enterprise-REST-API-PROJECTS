@@ -13,6 +13,8 @@ import { TodoManagementComponent } from './todo-management/todo-management.compo
 import { TodoEditComponent } from './todo-edit/todo-edit.component';
 import { TodoChangeComponent } from './todo-change/todo-change.component';
 import { TodoSettingsComponent } from './todo-settings/todo-settings.component';
+import { SortByComponent } from './sort-by/sort-by.component';
+import { FilterComponent } from './filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { TodoSettingsComponent } from './todo-settings/todo-settings.component';
     TodoManagementComponent,
     TodoEditComponent,
     TodoChangeComponent,
-    TodoSettingsComponent
+    TodoSettingsComponent,
+    SortByComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

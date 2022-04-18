@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h4 class="modal-title">Todo Settings</h4>
+  <h4 class="modal-title">Todo Filter</h4>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -7,8 +7,14 @@
 <div class="modal-body">
   <form>
     <div class="form-group">
-      <label for="offset">How many days until due date until warning label?</label>
-      <input type="number" class="form-control" name="offset" id="offset" [(ngModel)]="offset" />
+      <label for="default1">Filter By?</label>
+      <select class="form-select" aria-label="Default1">
+        <option selected>Open this select menu</option>
+        <option value="1">Work</option>
+        <option value="2">School</option>
+        <option value="3">Chore</option>
+        <option value="4">Hobby</option>
+      </select>
     </div>
   </form>
 </div>

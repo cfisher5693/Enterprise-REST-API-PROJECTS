@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FilterComponent } from '../filter/filter.component';
+import { SortByComponent } from '../sort-by/sort-by.component';
 import { TodoChangeComponent } from '../todo-change/todo-change.component';
 import { TodoEditComponent } from '../todo-edit/todo-edit.component';
 import { TodoSettingsComponent } from '../todo-settings/todo-settings.component';
@@ -41,13 +43,28 @@ export class TodoManagementComponent implements OnInit {
   }
 
   delete(id: number) {
-    this.todoService.remove(id);
-    this.get();
+    this.todoService.remove(id).subscribe((items) => {
+      this.get();
+    });
   }
 
   complete(item: TodoCustom) {
     item.completed = 1;
-    this.todoService.update(item)
+    this.todoService.update(item).subscribe((items) => {
+      this.get();
+    })
+  }
+
+  sortBy() {
+    this.modalService.open(SortByComponent).result.then(() => {
+      this.get();
+    });
+  }
+
+  filter() {
+    this.modalService.open(FilterComponent).result.then(() => {
+      this.get();
+    });
   }
 
   settings() {

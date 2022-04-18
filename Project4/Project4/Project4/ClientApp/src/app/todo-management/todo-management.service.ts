@@ -36,7 +36,6 @@ export class TodoManagementService {
 
   remove(id: number) {
     const newPath = this.baseUrl + '/' + id
-    console.log(newPath)
     return this.http.delete(newPath)
       .pipe(catchError(this.handleError));
   }
