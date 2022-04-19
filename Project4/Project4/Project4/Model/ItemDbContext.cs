@@ -18,7 +18,6 @@ namespace Project4.Model
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            //WARNING WINDOW IMPLEMENTATION?
             modelBuilder.Entity<Item>().HasData(new Item
             {
                 Id = 1,
