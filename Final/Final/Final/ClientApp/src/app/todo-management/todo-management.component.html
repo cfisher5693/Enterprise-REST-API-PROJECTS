@@ -1,0 +1,46 @@
+<h2>Incomplete Tasks</h2>
+<div class="btn-group">
+  <button class="btn-primary btn" (click)="add()">Add</button>
+  <button class="btn-primary btn" (click)="sortBy()">Sort By</button>
+  <button class="btn-primary btn" (click)="filter()">Filter</button>
+  <button class="btn-primary btn" (click)="settings()">Settings</button>
+</div>
+<p>   </p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Due Date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr [ngClass]="{ 'bg-danger': isPastDate(item.dueDate), 'bg-warning': isAlmostDue(item.dueDate) }" *ngFor="let item of items">
+      <td *ngIf="item.completed == 0">{{item.name}}</td>
+      <td *ngIf="item.completed == 0">{{item.description}}</td>
+      <td *ngIf="item.completed == 0">{{item.dueDate | date:'medium'}}</td>
+      <td *ngIf="item.completed == 0"><button class="btn-primary btn" (click)="edit(item)">Edit</button><p>   </p><button class="btn-primary btn" (click)="complete(item)">Complete</button></td>
+    </tr>
+  </tbody>
+</table>
+<h1></h1>
+<h2>Complete Tasks</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Due Date</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of items">
+      <td *ngIf="item.completed == 1">{{item.name}}</td>
+      <td *ngIf="item.completed == 1">{{item.description}}</td>
+      <td *ngIf="item.completed == 1">{{item.dueDate | date:'medium'}}</td>
+      <td *ngIf="item.completed == 1"><button class="btn-primary btn" (click)="delete(item.id)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
