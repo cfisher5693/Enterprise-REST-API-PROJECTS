@@ -22,6 +22,7 @@ export class TodoEditComponent implements OnInit {
   ngOnInit() {
     this.item = new TodoCustom();
     this.item.completed = 0;
+    this.item.owner = "";
     this.dueTime = { hour: 12, minute: 30, second: 0 };
   }
 

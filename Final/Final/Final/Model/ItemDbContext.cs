@@ -1,8 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace Final.Model
 {
-    public class ItemDbContext : DbContext
+    public class ItemDbContext : IdentityDbContext<IdentityUser>
     {
         public ItemDbContext(DbContextOptions<ItemDbContext> options) : base(options)
         {
@@ -25,6 +27,7 @@ namespace Final.Model
                 Description = "THIS IS A TEST ENTRY.",
                 DueDate = DateTime.UtcNow,
                 Completed = 0,
+                Owner = "john"
             });
             modelBuilder.Entity<ItemTags>().HasData(new ItemTags
             {

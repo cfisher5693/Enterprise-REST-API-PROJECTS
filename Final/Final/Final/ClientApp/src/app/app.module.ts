@@ -15,6 +15,8 @@ import { TodoChangeComponent } from './todo-change/todo-change.component';
 import { TodoSettingsComponent } from './todo-settings/todo-settings.component';
 import { SortByComponent } from './sort-by/sort-by.component';
 import { FilterComponent } from './filter/filter.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { FilterComponent } from './filter/filter.component';
     TodoChangeComponent,
     TodoSettingsComponent,
     SortByComponent,
-    FilterComponent
+    FilterComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -36,8 +40,10 @@ import { FilterComponent } from './filter/filter.component';
     FormsModule,
     NgbModule,
     RouterModule.forRoot([
-      { path: '', component: TodoManagementComponent, pathMatch: 'full' },
+      { path: '', component: LoginComponent, pathMatch: 'full' },
       { path: 'todo-management', component: TodoManagementComponent },
+      { path: 'register', component: RegisterComponent },
+      { path: 'login', component: LoginComponent },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
     ])

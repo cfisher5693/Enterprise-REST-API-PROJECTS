@@ -22,6 +22,7 @@ export class TodoChangeComponent implements OnInit {
   ngOnInit() {
     this.item = TodoManagementComponent.itemToChange;
     this.item.completed = 0;
+    this.item.owner = "";
     this.dueTime = { hour: 12, minute: 30, second: 0 };
   }
 

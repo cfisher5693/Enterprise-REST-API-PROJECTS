@@ -22,27 +22,27 @@ namespace Final.Services
             return item;
         }
 
-        public bool Delete(int itemId)
+        public bool Delete(int itemId, string owner)
         {
-            this._context.Items.Remove(GetById(itemId));
+            this._context.Items.Remove(GetById(itemId, owner));
             this._context.SaveChanges();
             return true;
         }
 
-        public Item GetById(int id)
+        public Item GetById(int id, string owner)
         {
-            var item = this._context.Items.Include(i => i.Tags).FirstOrDefault(i => i.Id == id);
+            var item = this._context.Items.Where(it => it.Owner == owner).Include(i => i.Tags).FirstOrDefault(i => i.Id == id);
             return item;
         }
 
-        public IEnumerable<Item> Get()
+        public IEnumerable<Item> Get(string owner)
         {
-            return this._context.Items.Include(i => i.Tags).ToList<Item>();
+            return this._context.Items.Where(it => it.Owner == owner).Include(i => i.Tags).ToList<Item>();
         }
 
         public Item Update(Item item)
         {
-            var itemUpdating = GetById(item.Id);
+            var itemUpdating = GetById(item.Id, item.Owner);
             itemUpdating.Name = item.Name;
             itemUpdating.Description = item.Description;
             itemUpdating.DueDate = item.DueDate;
