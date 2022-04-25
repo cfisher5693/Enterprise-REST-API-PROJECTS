@@ -17,6 +17,7 @@ import { SortByComponent } from './sort-by/sort-by.component';
 import { FilterComponent } from './filter/filter.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './login/auth.guard';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { LoginComponent } from './login/login.component';
     NgbModule,
     RouterModule.forRoot([
       { path: '', component: LoginComponent, pathMatch: 'full' },
-      { path: 'todo-management', component: TodoManagementComponent },
+      { path: 'todo-management', component: TodoManagementComponent, canActivate: [AuthGuard] },
       { path: 'register', component: RegisterComponent },
       { path: 'login', component: LoginComponent },
       { path: 'counter', component: CounterComponent },
