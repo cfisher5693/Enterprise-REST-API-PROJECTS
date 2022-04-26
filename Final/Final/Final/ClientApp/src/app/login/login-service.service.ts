@@ -40,6 +40,7 @@ export class LoginService {
   //}
 
   createUser(userCreds: UserCreds) {
+    console.log(userCreds)
     return this.http.post(this.tokenRequestUrl + '/create', userCreds)
       .pipe(catchError(this.handleError));
   }
