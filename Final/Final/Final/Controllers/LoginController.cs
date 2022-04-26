@@ -4,7 +4,7 @@ using Final.Model;
 using System.Text.Json;
 using Microsoft.AspNetCore.Identity;
 
-namespace Project3.Controllers
+namespace Final.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
