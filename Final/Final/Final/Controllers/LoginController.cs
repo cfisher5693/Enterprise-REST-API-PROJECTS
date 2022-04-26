@@ -27,16 +27,28 @@ namespace Project3.Controllers
             {
                 UserName = creds.UserName,
             }, creds.Password);
-            if (result.Succeeded) return Ok();
-            else return BadRequest(result.Errors);
+            if (result.Succeeded)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         [HttpPost("login")]
         public async Task<ActionResult> Login([FromBody] TodoUserLogin creds)
         {
             var result = await signInManager.PasswordSignInAsync(creds.UserName, creds.Password, true, false);
-            if (result.Succeeded) return Ok();
-            else return BadRequest();
+            if (result.Succeeded)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         [HttpPost]
